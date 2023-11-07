@@ -2,6 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/VistaPrincipal.vue'
 import GeneroPeliculaView from '../views/GeneroPeliculaView.vue'
 import CarteleraView from '../views/CarteleraView.vue'
+import PopularesView from '../views/PopularesView.vue'
+
+
 
 const routes = [
   {
@@ -18,7 +21,13 @@ const routes = [
     path: '/cartelera',
     name: 'cartelera',
     component: CarteleraView
+  },
+  {
+    path: '/populares',
+    name: 'populares',
+    component: PopularesView
   }
+
 ]
 
 const router = createRouter({
