@@ -5,10 +5,13 @@
                 <div class="card">
                     <div class="card-title">
                         <h3 class="text-center">
-                            {{ pelicula.title }}
+                            {{  }}
+                        </h3>
+                        <h3 class="text-center">
+                            {{    }}
                         </h3>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body" >
                         <img v-if="image" :src="image" alt="" width="200" height="200">
                         <div class="d-flex aligm-items-bottom">
                             <p> <stong>Tipo: </stong></p>
@@ -38,24 +41,20 @@
 
 <script>
 import { useRoute } from 'vue-router'
-import PeliService from '@/services/PeliService'
+import PeliService from '@/service/PeliService'
 export default {
+    components:{
+        'PeliService':PeliService
+    },
     name: 'DetailsView',
     data(){
         return {
             title:'',
-            overview: {},
-            yearsold: [],
-            image: null,
-            
+            Date: {},
         }
     },
     async created() {
-        const route = useRoute()
-        this.title = route.params.title
-        this.DetailsView = await DetailService.getDetailView(this.name)
-        this.overview = this.details.overview
-        this.image = this.details.sprites.other.dream_world.front_default
+        
     },
     methods: {
         goToDetails() {
@@ -71,7 +70,3 @@ export default {
     }
 }
 </script>
-
-<style lang="scss">
-
-</style>
