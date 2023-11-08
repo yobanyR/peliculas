@@ -6,7 +6,7 @@
             <img :src="'https://image.tmdb.org/t/p/w500' + pelicula.backdrop_path" class="card-img-top" :alt="pelicula.title" />
             <div class="card-body">
               <h5 class="card-title">{{ pelicula.title }}</h5>
-              <p class="card-text">{{ pelicula.date }}</p>
+              <p class="card-text">{{ pelicula.relase_date }}</p>
               <div>
                 <router-link :to="{path: '/DetailsView/'}"><button class="btn-primary">Ver detalle de pelicula</button>
                 </router-link>

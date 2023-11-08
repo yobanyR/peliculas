@@ -5,10 +5,10 @@
                 <div class="card">
                     <div class="card-title">
                         <h3 class="text-center">
-                            {{  }}
+                            {{ pelicula.title }}
                         </h3>
                         <h3 class="text-center">
-                            {{    }}
+                            {{  pelicula.relase_date    }}
                         </h3>
                     </div>
                     <div class="card-body" >
@@ -50,7 +50,7 @@ export default {
     data(){
         return {
             title:'',
-            Date: {},
+            relase_date: {},
         }
     },
     async created() {
