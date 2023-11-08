@@ -4,6 +4,7 @@ import GeneroPeliculaView from '../views/GeneroPeliculaView.vue'
 import CarteleraView from '../views/CarteleraView.vue'
 import DetailsView from '../views/DetailsView.vue'
 import MejorCalificadosView from '../views/MejorCalificadosView.vue'
+>>>>>>> develop
 
 const routes = [
   {
@@ -22,15 +23,17 @@ const routes = [
     component: CarteleraView
   },
   {
+<<<<<<< HEAD
     path: '/Detailsview',
     name: 'Detailsview',
     component: DetailsView
-  },
-  {
+
+=======
     path: '/MejorCalificados/',
     name: 'MejorCalificados',
     component: MejorCalificadosView
   }
+
 ]
 
 const router = createRouter({
