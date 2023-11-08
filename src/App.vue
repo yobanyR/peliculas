@@ -1,7 +1,5 @@
 <template>
-  <nav>
-    <router-link to="/">MI APP DE PELICULAS</router-link> 
-  </nav>
+ 
   <router-view/>
 </template>
 

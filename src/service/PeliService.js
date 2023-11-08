@@ -11,7 +11,7 @@ export default{
         })
     },  
     async getGeneroPelicula(id){
-        return await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=492d218f089fd8c20e9c3a945b482a9f&language=esCO&with_genres=${id}`)
+        return await axios.get(`https://api.themoviedb.org/3/movie/popular?page=1&api_key=492d218f089fd8c20e9c3a945b482a9f&language=es-CO`)
         .then(response =>{
             return response.data
         })
@@ -28,4 +28,24 @@ export default{
             console.log (error)
         })
     },
+    async getPopulares(id){
+        return await axios.get(`https://api.themoviedb.org/3/movie/popular?page=1&api_key=492d218f089fd8c20e9c3a945b482a9f&language=es-CO`)
+        .then(response =>{
+            return response.data
+        })
+        .catch(error =>{
+            console.log (error)
+        })
+
+    },
+    async getMejorCalificados(id){
+        return await axios.get(`https://api.themoviedb.org/3/movie/now_playing?page=3&api_key=492d218f089fd8c20e9c3a945b482a9f&language=es-CO`)
+        .then(response =>{
+            return response.data
+        })
+        .catch(error =>{
+            console.log (error)
+        })
+    },
+
 }

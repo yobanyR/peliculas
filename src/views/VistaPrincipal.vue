@@ -16,6 +16,13 @@
     <router-link :to="{ name: 'cartelera' }">
       <button>Ver Cartelera</button>
      </router-link>
+     <button style="border: ;">
+    <router-link :to="{path: '/populares/'}">Populares</router-link>
+    </button>
+
+     <router-link :to="{ path: '/MejorCalificados/'}">
+      <button>Mejor Calificados</button>
+    </router-link>
 
 </template>
   
