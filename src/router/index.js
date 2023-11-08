@@ -2,11 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/VistaPrincipal.vue'
 import GeneroPeliculaView from '../views/GeneroPeliculaView.vue'
 import CarteleraView from '../views/CarteleraView.vue'
-<<<<<<< HEAD
 import DetailsView from '../views/DetailsView.vue'
-=======
 import MejorCalificadosView from '../views/MejorCalificadosView.vue'
->>>>>>> develop
 
 const routes = [
   {
@@ -25,16 +22,14 @@ const routes = [
     component: CarteleraView
   },
   {
-<<<<<<< HEAD
     path: '/Detailsview',
     name: 'Detailsview',
     component: DetailsView
-
-=======
+  },
+  {
     path: '/MejorCalificados/',
     name: 'MejorCalificados',
     component: MejorCalificadosView
->>>>>>> develop
   }
 ]
 
