@@ -16,6 +16,9 @@
     <router-link :to="{ name: 'cartelera' }">
       <button>Ver Cartelera</button>
      </router-link>
+     <router-link :to="{ path: '/MejorCalificados/'}">
+      <button>Mejor Calificados</button>
+    </router-link>
 
 </template>
   
