@@ -14,7 +14,7 @@
             />
             <div class="card-body">
               <h5 class="card-title">{{ pelicula.title }}</h5>
-              <p class="card-text">{{ pelicula.relase_date  }}</p>
+              <p class="card-text">{{ pelicula.release_date  }}</p>
             </div>
           </div>
         </div>

@@ -8,9 +8,10 @@
               <h5 class="card-title">{{ pelicula.title }}</h5>
               <p class="card-text">{{ pelicula.relase_date }}</p>
               <div>
-                <router-link :to="{path: '/DetailsView/'}"><button class="btn-primary">Ver detalle de pelicula</button>
+                <!-- 
+                <router-link :to="{name:'DetailsView',params:{id:pelicula.id}}"><button class="btn btn-primary">Ver detalle de pelicula</button>
                 </router-link>
-                
+                -->
               </div>
             </div>
           </div>
