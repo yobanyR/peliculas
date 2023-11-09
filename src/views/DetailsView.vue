@@ -1,42 +1,36 @@
 <template>
-        <div class="container">
-        <div class="row d-flex justify-content-center">
-            <div  class="col-sm-8 mt-3 pt-3 pb-3">
-                <div class="card">
-                    <div class="card-title">
-                        <h3 class="text-center">
-                            {{ pelicula.title }}
-                        </h3>
-                        <h3 class="text-center">
-                            {{  pelicula.relase_date    }}
-                        </h3>
-                    </div>
-                    <div class="card-body" >
-                        <img v-if="image" :src="image" alt="" width="200" height="200">
-                        <div class="d-flex aligm-items-bottom">
-                            <p> <stong>Tipo: </stong></p>
-                            <p style="margin-right: 5px; margin-left: 2px;" v-for="(type, index) in types" :key="index">
-                                {{ type.type.title }}
-                            </p>
-                        </div>
-                        <div class="d-flex">
-                            <button @click="goToDetails()" class="btn btn-primary m-3">
-                                Ver Detalles
-                            </button>
-                            <button @click="goToTrailer()" class="btn btn-warning m-3">
-                                Ver Trailer
-                            </button>
-                        </div>
-                    </div>
-                </div>
+    <div class="container">
+        <button class="btn btn-primary">
+        <router-link :to="{path: '/'}">Ir a inicio</router-link>
+        </button>
+        <div class="row">
+            <div class="col">
+                <h4 class="text-center">
+                    Detalle pelicula
+                </h4>
+                <hr>
             </div>
         </div>
-        <div class="row d-flex justify-content-center">
-            <div  class="col-sm-8 mt-3 pt-3 pb-3">
-                <router-view></router-view>
+        <div class="row mt-1 p-3 d-flex justify-content-center">
+            <div class="col-sm-6 mt-1" style="max-height: 300px;">
+                <img :src="'${BASE_IMG}${pelicula.poster_path}'" alt="" style="max-height: 500px;">
+                <h4 class="text-success mt-2">
+                    {{ pelicula.title }}
+                </h4>
+                <p>{{ pelicula.release_date }}</p>
+            </div>
+            <div class="col-sm-6">
+                <div class="row d-flex">
+                    <div>
+                        
+                    </div>
+
+                </div>
+
             </div>
         </div>
     </div>
+        
 </template>
 
 <script>
