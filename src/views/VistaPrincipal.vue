@@ -16,9 +16,11 @@
     <router-link :to="{ name: 'cartelera' }">
       <button>Ver Cartelera</button>
      </router-link>
-     <button style="border: ;">
-    <router-link :to="{path: '/populares/'}">Populares</router-link>
-    </button>
+    
+    <router-link :to="{path: '/populares/'}">
+      <button style="border: ;">Populares</button>
+    </router-link>
+   
 
      <router-link :to="{ path: '/MejorCalificados/'}">
       <button>Mejor Calificados</button>
@@ -52,7 +54,7 @@
   }
 </script>
 
-<style>
+<style scoped>
     body {
       background-color: rgba(151, 213, 227, 0.75);  
     }
