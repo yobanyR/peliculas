@@ -39,7 +39,6 @@ import DetailsView from './DetailsView.vue';
     async created() {
       const peliculaId = this.$route.params.id;
       this.page = await PeliService.getGeneroPelicula(peliculaId);
-      console.log(this.page);
     },
   };
   </script>
