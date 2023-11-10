@@ -12,7 +12,6 @@
         </router-link>
       </div>
     </div>
-
     <div class="container">
       <div class="row">
         <div class="col-md-4 my-6 cardt" v-for="pelicula in pageResults" :key="pelicula.id">
