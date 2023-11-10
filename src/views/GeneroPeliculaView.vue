@@ -1,42 +1,40 @@
 <template>
-  <br>
+  <div>
     <br>
-  <div style="position: absolute; top: 10px;  left: 80px;">
-    <router-link :to="{ path: '/' }">
-      <button class="go-home-button">Ir a inicio</button>
-    </router-link>
-  </div>
-  <br>
-  <br>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4" v-for="pelicula in page.results" :key="pelicula.id">
-        <div class="card border-primary mb-3 cardt">
-          <img :src="'https://image.tmdb.org/t/p/w500' + pelicula.backdrop_path" class="card-img-top"
-            :alt="pelicula.title" />
-          <div class="card-body">
-            <h5 class="card-title">{{ pelicula.title }}</h5>
-            <strong>Fecha de lanzamiento:</strong>
-            <p class="card-text mt-3"> {{ formatDate(pelicula.release_date) }}</p>
-            <div>
-              <router-link :to="{ path: '/Detailsview/' + pelicula.id }">
-                <button class="btn btn-primary">Ver detalle de película</button>
-              </router-link>
-            </div>
-          </div>
-        </div>
+    <br>
+    <div style="position: absolute; top: 10px; left: 80px;">
+      <router-link :to="{ path: '/' }">
+        <button class="go-home-button">Ir a inicio</button>
+      </router-link>
+    </div>
+    <br>
+    <br>
+    <div class="container">
+      <div class="row">
+        <CardView
+          v-for="pelicula in page.results"
+          :key="pelicula.id"
+          :title="pelicula.title"
+          :imageSrc="'https://image.tmdb.org/t/p/w500' + pelicula.backdrop_path"
+          :releaseDate="pelicula.release_date"
+          :detailsLink="{ path: '/Detailsview/' + pelicula.id }"
+        />
       </div>
     </div>
   </div>
 </template>
 
+
 <script>
 import PeliService from '@/service/PeliService';
 import DetailsView from './DetailsView.vue';
+import CardView from './CardView.vue';
+
 
 export default {
   components: {
-    'DetailsView': DetailsView
+    'DetailsView': DetailsView,
+    'CardView': CardView,
   },
   name: 'GeneroPeliculaView',
   data() {
@@ -60,11 +58,7 @@ export default {
 </script>
 
 <style scoped>
-.card {
-  border: 1px solid;
-  border-color: #007bff;
-  /* Cambia el color según tus preferencias */
-}
+
 .go-home-button {
   background-color: #8be0f7;
   /* Color de fondo del botón */
@@ -82,7 +76,4 @@ export default {
 
 }
 
-.cardt {
-  height: 400px;
-  /* Ajusta la altura según tus necesidades */
-}</style>
+</style>

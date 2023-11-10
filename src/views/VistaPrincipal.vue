@@ -19,7 +19,7 @@
       <div class="offcanvas-body bg-dark pb-5">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <router-link :to="{ name: 'cartelera' }" class="nav-link active">Ver Cartelera</router-link>
+            <router-link :to="{ name: 'cartelera' }" class="nav-link active">Cartelera</router-link>
           </li>
           <li class="nav-item">
             <router-link :to="{ path: '/populares/' }" class="nav-link">Populares</router-link>

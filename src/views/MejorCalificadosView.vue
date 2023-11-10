@@ -1,58 +1,57 @@
 <template>
   <div>
-      <h1>Mejor Calificados</h1>
-      <br>
+    <h1>Mejor Calificados</h1>
+    <br>
 
-      <div style="position: absolute; top: 10px;  left: 80px;">
-        <router-link :to="{ path: '/' }">
-          <button class="go-home-button">Ir a inicio</button>
-        </router-link>
-      </div>
+    <div style="position: absolute; top: 10px; left: 80px;">
+      <router-link :to="{ path: '/' }">
+        <button class="go-home-button">Ir a inicio</button>
+      </router-link>
     </div>
-   <div class="container">
-      <div class="row">
-        <div class="col-md-4 my-6 cardt" v-for="pelicula in pageResults" :key="pelicula.id">
-          <div class="card col-md my-4">
-            <img :src="'https://image.tmdb.org/t/p/w500' + pelicula.backdrop_path" class="card-img-top"
-              :alt="pelicula.title" /> <!-- Muestra la imagen de la película -->
-            <div class="card-body">
-              <!-- Muestra el título de la película y su fecha de lanzamiento -->
-              <h5 class="card-title">{{ pelicula.title }}</h5>
-              <h6><strong> Fecha de lanzamiento:</strong></h6>
-              <p class="card-text">{{ formatDate(pelicula.release_date) }}</p>
-
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Paginación con Bootstrap -->
-      <nav aria-label="Page navigation example">
-        <ul class="pagination">
-          <li class="page-item" :class="{ disabled: page === 1 }">
-            <a class="page-link" @click="changePage(page - 1)" href="#" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
-            </a>
-          </li>
-          <li v-for="pageNumber in totalPages" :key="pageNumber" class="page-item" :class="{ active: page === pageNumber }">
-            <a class="page-link" @click="changePage(pageNumber)" href="#">{{ pageNumber }}</a>
-          </li>
-          <li class="page-item" :class="{ disabled: page === totalPages }">
-            <a class="page-link" @click="changePage(page + 1)" href="#" aria-label="Next">
-              <span aria-hidden="true">&raquo;</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
+  </div>
+  <div class="container">
+    <div class="row">
+      <!-- Utiliza el componente CardView para cada película -->
+      <CardView
+        v-for="pelicula in pageResults"
+        :key="pelicula.id"
+        :title="pelicula.title"
+        :imageSrc="'https://image.tmdb.org/t/p/w500' + pelicula.backdrop_path"
+        :releaseDate="pelicula.release_date"
+        :detailsLink="'/Detailsview/' + pelicula.id"
+      />
     </div>
 
+    <!-- Paginación con Bootstrap -->
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item" :class="{ disabled: page === 1 }">
+          <a class="page-link" @click="changePage(page - 1)" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li v-for="pageNumber in totalPages" :key="pageNumber" class="page-item" :class="{ active: page === pageNumber }">
+          <a class="page-link" @click="changePage(pageNumber)" href="#">{{ pageNumber }}</a>
+        </li>
+        <li class="page-item" :class="{ disabled: page === totalPages }">
+          <a class="page-link" @click="changePage(page + 1)" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
 </template>
 
 <script>
 import PeliService from '@/service/PeliService';
+import CardView from './CardView.vue';
 
 export default {
-  name: 'PopularesView',
+  name: 'MejorCalificadosView',
+  components: {
+    'CardView': CardView,
+  },
   data() {
     return {
       page: 1,
@@ -84,22 +83,9 @@ export default {
     },
   },
 };
-</script> 
+</script>
 
 <style scoped>
-.card {
-  /* Ajusta el tamaño de los cuadros según tus necesidades */
-  width: 350px;
-  height: 320px;
-  /* Opcional: Puedes agregar márgenes o espaciado interno */
-  margin: 10px;
-  padding: 10px;
-  border: 1px solid #121010;
-  /* Agrega un borde para resaltar los cuadros */
-  text-align: center;
-  display: flex;
-}
-
 .go-home-button {
   background-color: #8be0f7;
   /* Color de fondo del botón */
@@ -117,4 +103,3 @@ export default {
 
 }
 </style>
-  
