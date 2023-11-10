@@ -4,6 +4,8 @@ import GeneroPeliculaView from '../views/GeneroPeliculaView.vue'
 import CarteleraView from '../views/CarteleraView.vue'
 import DetailsView from '../views/DetailsView.vue'
 import MejorCalificadosView from '../views/MejorCalificadosView.vue'
+import PopularesView from '../views/PopularesView.vue'
+
 
 
 const routes = [
@@ -18,37 +20,21 @@ const routes = [
     component: GeneroPeliculaView
   },
   {
+    path: '/populares',
+    name: 'populares',
+    component: PopularesView
+  },
+
+  {
     path: '/cartelera',
     name: 'cartelera',
     component: CarteleraView
   },
 
   {
-    path: '/Detailsview:id',
+    path: '/Detailsview/:id', // Asegúrate de agregar el carácter "/" antes de ":id"
     name: 'Detailsview',
     component: DetailsView,
-    children:[
-      {
-        path:'summary',
-        name:'summary',
-        component
-      },
-      {
-        path: 'generos',
-        name:'generos',
-        component
-      },
-      {
-        path:'company',
-        name:'company',
-        component 
-      },
-      {
-        path:'trailer',
-        name:'trailer',
-        component
-      }
-    ]
   },
   {
     path: '/MejorCalificados/',
