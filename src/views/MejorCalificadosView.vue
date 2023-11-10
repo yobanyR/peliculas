@@ -1,35 +1,105 @@
 <template>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4" v-for="pelicula in page.results" :key="pelicula.id">
-          <div class="card">
-            <img :src="'https://image.tmdb.org/t/p/w500' + pelicula.backdrop_path" class="card-img-top" :alt="pelicula.title" />
-            <div class="card-body">
-              <h5 class="card-title">{{ pelicula.title }}</h5>
-              <p class="card-text">{{ pelicula.release_date }}</p>
-            </div>
-          </div>
-        </div>
-      </div>
+  <div>
+    <h1>Mejor Calificados</h1>
+    <br>
+
+    <div style="position: absolute; top: 10px; left: 80px;">
+      <router-link :to="{ path: '/' }">
+        <button class="go-home-button">Ir a inicio</button>
+      </router-link>
     </div>
-  </template>
-  
-  <script>
-import PeliService from '@/service/PeliService'
-  
-  export default {
-    name: 'MejorCalificadosView',
-    data() {
-      return {
-        page: {
-          results: [],
-        },
-      };
+  </div>
+  <div class="container">
+    <div class="row">
+      <!-- Utiliza el componente CardView para cada película -->
+      <CardView
+        v-for="pelicula in pageResults"
+        :key="pelicula.id"
+        :title="pelicula.title"
+        :imageSrc="'https://image.tmdb.org/t/p/w500' + pelicula.backdrop_path"
+        :releaseDate="pelicula.release_date"
+        :detailsLink="'/Detailsview/' + pelicula.id"
+      />
+    </div>
+
+    <!-- Paginación con Bootstrap -->
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item" :class="{ disabled: page === 1 }">
+          <a class="page-link" @click="changePage(page - 1)" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li v-for="pageNumber in totalPages" :key="pageNumber" class="page-item" :class="{ active: page === pageNumber }">
+          <a class="page-link" @click="changePage(pageNumber)" href="#">{{ pageNumber }}</a>
+        </li>
+        <li class="page-item" :class="{ disabled: page === totalPages }">
+          <a class="page-link" @click="changePage(page + 1)" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</template>
+
+<script>
+import PeliService from '@/service/PeliService';
+import CardView from './CardView.vue';
+
+export default {
+  name: 'MejorCalificadosView',
+  components: {
+    'CardView': CardView,
+  },
+  data() {
+    return {
+      page: 1,
+      totalPages: 1,
+      itemsPerPage: 10, // Número de elementos por página
+      pageResults: [],
+    };
+  },
+  async created() {
+    await this.fetchData(this.page);
+  },
+  methods: {
+    async fetchData(page) {
+      try {
+        const response = await PeliService.getMejorCalificados(page);
+        this.pageResults = response.results;
+        this.totalPages = response.total_pages > 10 ? 10 : response.total_pages; // Limita a un máximo de 10 páginas
+      } catch (error) {
+        console.error(error);
+      }
     },
-    async created() {
-      const peliculaId = this.$route.params.id;
-      this.page = await PeliService.getMejorCalificados();
-      console.log(this.page);
+    formatDate(date) {
+      const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+      return new Date(date).toLocaleDateString(undefined, options);
     },
-  };
-  </script>
+    async changePage(page) {
+      this.page = page;
+      await this.fetchData(this.page);
+    },
+  },
+};
+</script>
+
+<style scoped>
+.go-home-button {
+  background-color: #8be0f7;
+  /* Color de fondo del botón */
+  color: #0e0505;
+  /* Color del texto del botón */
+  border: 2px solid #007bff;
+  /* Borde del botón */
+  padding: 10px 20px;
+  /* Espaciado dentro del botón */
+  border-radius: 5px;
+  /* Bordes redondeados */
+  font-size: 1rem;
+  /* Tamaño de la fuente del botón */
+
+
+}
+</style>

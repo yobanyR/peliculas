@@ -12,22 +12,16 @@
         </router-link>
       </div>
     </div>
-
     <div class="container">
       <div class="row">
-        <div class="col-md-4 my-6 cardt" v-for="pelicula in pageResults" :key="pelicula.id">
-          <div class="card col-md my-4">
-            <img :src="'https://image.tmdb.org/t/p/w500' + pelicula.backdrop_path" class="card-img-top"
-              :alt="pelicula.title" /> <!-- Muestra la imagen de la película -->
-            <div class="card-body">
-              <!-- Muestra el título de la película y su fecha de lanzamiento -->
-              <h5 class="card-title">{{ pelicula.title }}</h5>
-              <h6><strong> Fecha de lanzamiento:</strong></h6>
-              <p class="card-text">{{ formatDate(pelicula.release_date) }}</p>
-
-            </div>
-          </div>
-        </div>
+        <CardView
+          v-for="pelicula in pageResults"
+          :key="pelicula.id"
+          :title="pelicula.title"
+          :imageSrc="'https://image.tmdb.org/t/p/w500' + pelicula.backdrop_path"
+          :releaseDate="pelicula.release_date"
+          :detailsLink="{ path: '/Detailsview/' + pelicula.id }"
+        />
       </div>
 
       <!-- Paginación con Bootstrap -->
@@ -54,9 +48,13 @@
 
 <script>
 import PeliService from '@/service/PeliService';
+import CardView from './CardView.vue';
 
 export default {
   name: 'PopularesView',
+  components: {
+    'CardView': CardView,
+  },
   data() {
     return {
       page: 1,
@@ -91,18 +89,7 @@ export default {
 </script> 
 
 <style scoped>
-.card {
-  /* Ajusta el tamaño de los cuadros según tus necesidades */
-  width: 350px;
-  height: 320px;
-  /* Opcional: Puedes agregar márgenes o espaciado interno */
-  margin: 10px;
-  padding: 10px;
-  border: 1px solid #121010;
-  /* Agrega un borde para resaltar los cuadros */
-  text-align: center;
-  display: flex;
-}
+
 
 .go-home-button {
   background-color: #8be0f7;
