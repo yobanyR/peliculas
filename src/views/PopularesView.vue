@@ -66,25 +66,25 @@ export default {
     };
   },
   async created() {
-    await this.fetchData(this.page);
+    await this.fetchData(this.page);  // Llama a la función fetchData() al inicio del ciclo de vida del componente
   },
   methods: {
-    async fetchData(page) {
-      try {
-        const response = await PeliService.getPopulares(page);
-        this.pageResults = response.results;
+    async fetchData(page) {// Define una función asincrónica llamada fetchData que toma un parámetro 'page'.
+      try { 
+        const response = await PeliService.getPopulares(page); // Intenta realizar una solicitud para obtener datos populares de PeliService para la página especificada.
+        this.pageResults = response.results;  // Calcula el número total de páginas y lo limita a un máximo de 10 páginas.
         this.totalPages = response.total_pages > 10 ? 10 : response.total_pages; // Limita a un máximo de 10 páginas
-      } catch (error) {
+      } catch (error) {// En caso de error, imprime el error en la consola.
         console.error(error);
       }
     },
-    formatDate(date) {
-      const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
-      return new Date(date).toLocaleDateString(undefined, options);
+    formatDate(date) {// Definición de una función llamada formatDate que toma una fecha y devuelve una cadena de texto con el formato deseado.
+      const options = { year: 'numeric', month: '2-digit', day: '2-digit' }; // Opciones de formato para la fecha, indicando el año en formato numérico, el mes en formato de dos dígitos y el día en formato de dos dígitos.
+      return new Date(date).toLocaleDateString(undefined, options); // Creación de un nuevo objeto de fecha a partit de fecha y formateo de la fecha según las opciones definidas.
     },
-    async changePage(page) {
-      this.page = page;
-      await this.fetchData(this.page);
+    async changePage(page) {// Definición de una función asíncrona llamada changePage que toma un número de página como argumento.
+      this.page = page;// Establecimiento de la propiedad 'page' en el objeto actual con el valor proporcionad
+      await this.fetchData(this.page); // Llamada a la función fetchData con el número de página como argumento después de establecer la propiedad 'page'.
     },
   },
 };
