@@ -72,7 +72,17 @@ export default{
         .catch(error =>{
             console.log(error)
         })
-    }
+    },
+    
+    async getTrailers(id){
+        return await axios.get(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=492d218f089fd8c20e9c3a945b482a9f&language=es-CO`)
+        .then(response=>{
+            return response.data.results
+        })
+        .catch(error =>{
+            console.log(error)
+        })
+    },
       
 
 }
