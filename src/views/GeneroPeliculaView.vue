@@ -8,7 +8,7 @@
             <h5 class="card-title">{{ pelicula.title }}</h5>
             <p class="card-text">{{ pelicula.release_date }}</p>
             <div>
-              <router-link :to="{path:'/Detailsview/' + pelicula.id}">
+              <router-link :to="{name:'detalle',params:{id:pelicula.id}}">
                 <button class="btn btn-primary">Ver detalle de película</button>
               </router-link>
             </div>
