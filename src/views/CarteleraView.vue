@@ -23,6 +23,7 @@
           :releaseDate="pelicula.release_date"
           :detailsLink="{ path: '/Detailsview/' + pelicula.id }"
         />
+
       </div>
 
       <!-- Paginación con Bootstrap -->

@@ -1,5 +1,4 @@
 <template>
-  <div>
     <br>
     <br>
     <div style="position: absolute; top: 10px; left: 80px;">
