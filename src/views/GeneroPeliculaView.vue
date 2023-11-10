@@ -1,4 +1,6 @@
 <template>
+  
+  <div>
     <br>
     <br>
     <div style="position: absolute; top: 10px; left: 80px;">
@@ -16,7 +18,7 @@
           :title="pelicula.title"
           :imageSrc="'https://image.tmdb.org/t/p/w500' + pelicula.backdrop_path"
           :releaseDate="pelicula.release_date"
-          :detailsLink="{ path: '/Detailsview/' + pelicula.id }"
+          :detailsLink="{ path: '/detalle/' + pelicula.id }"
         />
       </div>
     </div>

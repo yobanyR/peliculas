@@ -47,8 +47,8 @@ const routes = [
         component: ResumenView
       },
       {
-        path:'genero',
-        name:'genero',
+        path:'generos',
+        name:'generos',
         component: GeneroView
       },
       {

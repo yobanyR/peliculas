@@ -18,7 +18,7 @@
         :title="pelicula.title"
         :imageSrc="'https://image.tmdb.org/t/p/w500' + pelicula.backdrop_path"
         :releaseDate="pelicula.release_date"
-        :detailsLink="'/Detailsview/' + pelicula.id"
+        :detailsLink="'/detalle/' + pelicula.id"
       />
     </div>
 
