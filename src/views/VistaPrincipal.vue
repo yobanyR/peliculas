@@ -1,138 +1,97 @@
 <template>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4" v-for="(pelicula, index) in peliculas" :key="index">
-          <div class="card mb-3" :class="getCardColor(index)">
-            <div class="card-body">
-              <h2 class="card-title">{{ pelicula.name }}</h2>
-              <router-link :to="{ path: '/genero/' + pelicula.id}">
-                  <h2>Ir</h2>
-              </router-link>
-            </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4" v-for="(pelicula, index) in peliculas" :key="index">
+        <div :class="['card', 'mb-3', 'custom-border', getCardColor(index)]">
+          <div class="card-body">
+            <h2 class="card-title">{{ pelicula.name }}</h2>
+            <router-link :to="{ path: '/genero/' + pelicula.id}">
+                <h2>Ir</h2>
+            </router-link>
           </div>
         </div>
       </div>
     </div>
-    <router-link :to="{ name: 'cartelera' }">
-      <button>Ver Cartelera</button>
-     </router-link>
-    
-    <router-link :to="{path: '/populares/'}">
-      <button style="border: ;">Populares</button>
-    </router-link>
-   
+  </div>
+  <router-link :to="{ name: 'cartelera' }">
+    <button>Ver Cartelera</button>
+   </router-link>
+  
+  <router-link :to="{path: '/populares/'}">
+    <button class="btn btn-outline-primary">Populares</button>
+  </router-link>
+ 
 
-     <router-link :to="{ path: '/MejorCalificados/'}">
-      <button>Mejor Calificados</button>
-    </router-link>
+   <router-link :to="{ path: '/MejorCalificados/'}">
+    <button>Mejor Calificados</button>
+  </router-link>
 
 </template>
-  
+
 <script>
-  import PeliService from '@/service/PeliService'
-  
-  export default {
-    name: 'VistaPrincipal',
-    data() {
-      return {
-        peliculas: []
-      }
-    },
-    methods: {
-      getCardColor(index) {
-        const colors = [
-            'bg-blue-400', 'bg-blue-700', 'bg-indigo', 'bg-indigo-600', 'bg-purple', 'bg-purple-500', 'bg-pink', 'bg-pink-800',
-            'bg-red', 'bg-red-300', 'bg-orange', 'bg-orange-600', 'bg-yellow', 'bg-yellow-700', 'bg-green', 'bg-green-600',
-            'bg-teal', 'bg-teal-400', 'bg-cyan', 'bg-cyan-500', 'bg-gray-500', 'bg-gray-200'
-        ];        
-        return colors[index % colors.length];
-      }
-    },
-    async created() {
-      this.peliculas = await PeliService.getPelicula()
+import PeliService from '@/service/PeliService'
+
+export default {
+  name: 'VistaPrincipal',
+  data() {
+    return {
+      peliculas: []
     }
+  },
+  methods: {
+    getCardColor(index) {
+      const colors = [
+        'border-custom-blue', 'border-custom-indigo', 'border-custom-purple', 'border-custom-pink',
+        'border-custom-red', 'border-custom-orange', 'border-custom-yellow', 'border-custom-green',
+        'border-custom-teal', 'border-custom-cyan', 'border-custom-gray'
+      ];        
+      return colors[index % colors.length];
+    }
+  },
+  async created() {
+    this.peliculas = await PeliService.getPelicula()
   }
+}
 </script>
 
 <style scoped>
     body {
       background-color: rgba(151, 213, 227, 0.75);  
     }
-    .bg-blue-400 {
-    background-color: #3498db;
+    .custom-border {
+      border-width: 3px;
     }
-    .bg-blue-700 {
-    background-color: #2980b9;
+    .border-custom-blue {
+      border-color: #007bff;
     }
-
-    .bg-indigo {
-    background-color: #6610f2;
+    .border-custom-indigo {
+      border-color: #6610f2;
     }
-    .bg-indigo-600 {
-    background-color: #5a32a3;
+    .border-custom-purple {
+      border-color: #6f42c1;
     }
-
-    .bg-purple {
-    background-color: #6f42c1;
+    .border-custom-pink {
+      border-color: #d63384;
     }
-    .bg-purple-500 {
-    background-color: #89609e;
+    .border-custom-red {
+      border-color: #dc3545;
     }
-
-    .bg-pink {
-    background-color: #d63384;
+    .border-custom-orange {
+      border-color: #fd7e14;
     }
-    .bg-pink-800 {
-    background-color: #8e3164;
+    .border-custom-yellow {
+      border-color: #ffc107;
     }
-
-    .bg-red {
-    background-color: #dc3545;
+    .border-custom-green {
+      border-color: #198754;
     }
-    .bg-red-300 {
-    background-color: #e4606d;
+    .border-custom-teal {
+      border-color: #20c997;
     }
-
-    .bg-orange {
-    background-color: #fd7e14;
+    .border-custom-cyan {
+      border-color: #0dcaf0;
     }
-    .bg-orange-600 {
-    background-color: #e06621;
-    }
-
-    .bg-yellow {
-    background-color: #ffc107;
-    }
-    .bg-yellow-700 {
-    background-color: #d39e00;
-    }
-
-    .bg-green {
-    background-color: #198754;
-    }
-    .bg-green-600 {
-    background-color: #157347;
-    }
-
-    .bg-teal {
-    background-color: #20c997;
-    }
-    .bg-teal-400 {
-    background-color: #48cfad;
-    }
-
-    .bg-cyan {
-    background-color: #0dcaf0;
-    }
-    .bg-cyan-500 {
-    background-color: #17a2b8;
-    }
-
-    .bg-gray-500 {
-    background-color: #adb5bd;
-    }
-    .bg-gray-200 {
-    background-color: #f8f9fa;
+    .border-custom-gray {
+      border-color: #6c757d;
     }
 </style>
-  

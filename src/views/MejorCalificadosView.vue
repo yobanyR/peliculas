@@ -6,7 +6,7 @@
             <img :src="'https://image.tmdb.org/t/p/w500' + pelicula.backdrop_path" class="card-img-top" :alt="pelicula.title" />
             <div class="card-body">
               <h5 class="card-title">{{ pelicula.title }}</h5>
-              <p class="card-text">{{ pelicula.overview }}</p>
+              <p class="card-text">{{ pelicula.release_date }}</p>
             </div>
           </div>
         </div>

@@ -20,29 +20,28 @@ const routes = [
     component: GeneroPeliculaView
   },
   {
-    path: '/cartelera',
-    name: 'cartelera',
-    component: CarteleraView
-  },
-  {
     path: '/populares',
     name: 'populares',
     component: PopularesView
   },
+
   {
-    path: '/Detailsview',
+    path: '/cartelera',
+    name: 'cartelera',
+    component: CarteleraView
+  },
+
+  {
+    path: '/Detailsview/:id', // Asegúrate de agregar el carácter "/" antes de ":id"
     name: 'Detailsview',
-    component: DetailsView
+    component: DetailsView,
   },
   {
-
     path: '/MejorCalificados/',
     name: 'MejorCalificados',
     component: MejorCalificadosView
   }
-
 ]
-
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes

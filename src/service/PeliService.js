@@ -59,7 +59,7 @@ export default{
           console.error('Error al obtener los detalles de la película:', error);
           return null; // O devuelve algún otro valor predeterminado dependiendo de la lógica de tu aplicación
         }
-      },
-      
+      },
+      
 
 }
