@@ -1,6 +1,10 @@
 <template>
-    <h4>Resumen</h4>
-    <p>{{ movieDetails.overview }}</p>
+    <div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Resumen</h5>
+    <p class="card-text">{{ movieDetails.overview }}</p>
+  </div>
+</div>
 </template> 
 <script>
 import PeliService from '@/service/PeliService';

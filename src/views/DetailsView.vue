@@ -34,13 +34,13 @@
           <button @click="VerResumen()" class="btn btn-primary">Resumen</button>
         </div>
         <div class="col">
-          <button @click="VerGenero()" class="btn btn-primary">Genero</button>
+          <button @click="VerGenero()" class="btn btn-warning">Genero</button>
         </div>
         <div class="col">
-          <button @click="VerProductor()" class="btn btn-primary">Productor</button>
+          <button @click="VerProductor()" class="btn btn-success">Productor</button>
         </div>
         <div class="col">
-          <button @click="VerTrailer()" class="btn btn-primary">Trailer</button>
+          <button @click="VerTrailer()" class="btn btn-danger">Trailer</button>
         </div>
       </div>
       <div class="row mt-3">
@@ -82,7 +82,7 @@
                 this.$router.push({name:'productor'})
             },
             VerGenero(){
-                this.$router.push({name:'genero'})
+                this.$router.push({name:'generos'})
             },
             VerTrailer(){
                 this.$router.push({name:'trailer'})

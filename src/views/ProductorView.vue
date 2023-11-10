@@ -1,6 +1,8 @@
 <template>
-    <h4>Productor</h4>
-    <p>{{ movieDetails.production_companies }}</p>
+   <div class="card" style="width: 18rem;">
+    <h4 class="text-aling">Productora</h4>
+  <img src="https://e00-expansion.uecdn.es/imagenes/2012/06/12/tendencias/1339480350_0.jpg" class="card-img-top" alt="...">
+</div>
 </template> 
 <script>
 import PeliService from '@/service/PeliService';
