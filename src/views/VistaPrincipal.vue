@@ -14,7 +14,7 @@
     </div>
   </div>
   <router-link :to="{ name: 'cartelera' }">
-    <button>Ver Cartelera</button>
+    <button class="btn btn-outline-primary">Ver Cartelera</button>
    </router-link>
   
   <router-link :to="{path: '/populares/'}">
