@@ -5,6 +5,26 @@
             <button class="go-home-button">Ir a inicio</button>
         </router-link>
     </div>
+
+    <div class="col-sm-6">
+      <div class="row d-flex">
+        <div class="col">
+          <button @click="VerResumen()" class="btn btn-primary">Resumen</button>
+        </div>
+        <div class="col">
+          <button @click="VerGenero()" class="btn btn-warning">Genero</button>
+        </div>
+        <div class="col">
+          <button @click="VerProductor()" class="btn btn-success">Productor</button>
+        </div>
+        <div class="col">
+          <button @click="VerTrailer()" class="btn btn-danger">Trailer</button>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col">
+            <router-view/>
+        </div>
     <br>
     <br>
     <div>
@@ -73,6 +93,21 @@ export default {
         formatDate(date) {
             const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
             return new Date(date).toLocaleDateString(undefined, options);
+
+            },
+            VerResumen(){
+                this.$router.push({name:'resumen'})
+            },
+            VerProductor(){
+                this.$router.push({name:'productor'})
+            },
+            VerGenero(){
+                this.$router.push({name:'generos'})
+            },
+            VerTrailer(){
+                this.$router.push({name:'trailer'})
+            },
+
         },
         VerResumen() {
             this.$router.push({ name: 'resumen' });
